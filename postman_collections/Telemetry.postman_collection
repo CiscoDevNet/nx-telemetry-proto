@@ -1,0 +1,485 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Telemetry copy",
+		"_postman_id": "1e35540b-d913-5ba0-17b4-80cf3bfaaf23",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AUTH",
+			"description": "",
+			"item": [
+				{
+					"name": "Authentication",
+					"request": {
+						"url": "http://{{ip}}/api/aaaLogin.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"aaaUser\" : {\n    \"attributes\" : {\n      \"name\" : \"admin\",\n      \"pwd\" : \"cisco\"\n    } \n  }\n}"
+						},
+						"description": "AAA authentication for the REST calls."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE",
+			"description": "",
+			"item": [
+				{
+					"name": "Certificate",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/certificate.json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Sensor-Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/sensor-10.json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Sensor-Path",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/sensor-10/path-[sys/fm/bgp].json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Destination-Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/dest-20.json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Destination-Profile",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/dest-20/addr-[10.30.217.80]-port-50001.json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/subs-30.json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Unsubscribe-Sensor-Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/subs-30/rssensorGroupRel-[sys/tm/sensor-10].json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Unsubscribe-Destination-Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/subs-30/rsdestGroupRel-[sys/tm/dest-20].json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Telemetry-All-Configs",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm.json",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "GET",
+			"description": "",
+			"item": [
+				{
+					"name": "Certificate",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/certificate.json?rsp-subtree=full",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"aaaUser\" : {\n    \"attributes\" : {\n      \"name\" : \"admin\",\n      \"pwd\" : \"cisco\"\n    } \n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Sensor Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/sensor-10.json?rsp-subtree=full",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"aaaUser\" : {\n    \"attributes\" : {\n      \"name\" : \"admin\",\n      \"pwd\" : \"cisco\"\n    } \n  }\n}"
+						},
+						"description": "Get sensor group. "
+					},
+					"response": []
+				},
+				{
+					"name": "Destination Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/dest-20.json?rsp-subtree=full",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"aaaUser\" : {\n    \"attributes\" : {\n      \"name\" : \"admin\",\n      \"pwd\" : \"cisco\"\n    } \n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Subscription",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm/subs-30.json?rsp-subtree=full",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"aaaUser\" : {\n    \"attributes\" : {\n      \"name\" : \"admin\",\n      \"pwd\" : \"cisco\"\n    } \n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Telemetry All Configs",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm.json?rsp-subtree=full",
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n  \"aaaUser\" : {\n    \"attributes\" : {\n      \"name\" : \"admin\",\n      \"pwd\" : \"cisco\"\n    } \n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST-Certificate",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE-Security-Certificate",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetryCertificate\": {\n        \"attributes\": {\n          \"filename\": \"/bootflash/root.pem\",\n          \"hostname\" : \"foo.test.google.fr\"\n        }\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST-Destination-Group",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE-Destination-Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetryDestGroup\": {\n        \"attributes\": {\n          \"id\": \"20\"\n        }\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE-Single-Destination-Profile",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetryDestGroup\": {\n        \"attributes\": {\n          \"id\": \"20\"\n        }\n        \"children\": [{\n          \"telemetryDest\": {\n            \"attributes\": {\n              \"addr\": \"1.2.3.4\",\n              \"port\": \"50051\",\n              \"enc\": \"GPB\",\n              \"proto\": \"gRPC\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE-Multiple-Destination-Profile",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetryDestGroup\": {\n        \"attributes\": {\n          \"id\": \"20\"\n        }\n        \"children\": [{\n          \"telemetryDest\": {\n            \"attributes\": {\n              \"addr\": \"1.2.3.4\",\n              \"port\": \"50051\",\n              \"enc\": \"GPB\",\n              \"proto\": \"gRPC\"\n            }\n          }\n        },\n        {\n          \"telemetryDest\": {\n            \"attributes\": {\n              \"addr\": \"1.2.3.4\",\n              \"port\": \"50052\",\n              \"enc\": \"GPB\",\n              \"proto\": \"gRPC\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST-Feature-Telemetry",
+			"description": "",
+			"item": [
+				{
+					"name": "Enable Feature Telemetry",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fmEntity\" : {\n    \"children\" : [{ \n      \"fmTelemetry\" : {\n        \"attributes\" : {\n          \"adminSt\" : \"enabled\"\n        }\n      }\n    }\n    ]\n  }\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Disable Feature Telemetry",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"fmEntity\" : {\n    \"children\" : [{ \n      \"fmTelemetry\" : {\n        \"attributes\" : {\n          \"adminSt\" : \"disabled\"\n        }\n      }\n    }\n    ]\n  }\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST-Sensor-Group",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE-Sensor-group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySensorGroup\": {\n        \"attributes\": {\n          \"id\": \"10\",\n          \"dataSrc\" : \"DME\"\n        }\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE-Single-Sensor-Path-Without-Filter",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySensorGroup\": {\n        \"attributes\": {\n          \"id\": \"10\"\n        }\n        \"children\": [{\n          \"telemetrySensorPath\": {\n            \"attributes\": {\n              \"path\": \"sys/fm/bgp\",\n              \"depth\": \"0\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE-Single-Sensor-Path-With-Filter",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySensorGroup\": {\n        \"attributes\": {\n          \"id\": \"10\"\n        }\n        \"children\": [{\n          \"telemetrySensorPath\": {\n            \"attributes\": {\n              \"filterCondition\": \"eq(fmBgp.operSt,\\\"disabled\\\")\",\n              \"path\": \"sys/fm/bgp\",\n              \"depth\": \"0\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE-Multiple-Sensor-Paths",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys/tm.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySensorGroup\": {\n        \"attributes\": {\n          \"id\": \"10\"\n        }\n        \"children\": [{\n          \"telemetrySensorPath\": {\n            \"attributes\": {\n              \"path\": \"sys/fm/bgp\",\n              \"depth\": \"0\"\n            }\n          }\n        },\n        {\n          \"telemetrySensorPath\": {\n            \"attributes\": {\n              \"path\": \"sys/fm/dhcp\",\n              \"depth\": \"0\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST-Subscription",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE-Subscription",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySubscription\": {\n        \"attributes\": {\n          \"id\": \"30\"\n        }\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SUBSCRIBE-Sensor-Group-For-Events",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySubscription\": {\n        \"attributes\": {\n          \"id\": \"30\"\n        }\n        \"children\": [{\n          \"telemetryRsSensorGroupRel\": {\n            \"attributes\": {\n              \"sampleIntvl\": \"0\",\n              \"tDn\": \"sys/tm/sensor-10\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SUBSCRIBE-Sensor-Group-For-Cadence",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySubscription\": {\n        \"attributes\": {\n          \"id\": \"30\"\n        }\n        \"children\": [{\n          \"telemetryRsSensorGroupRel\": {\n            \"attributes\": {\n              \"sampleIntvl\": \"5000\",\n              \"tDn\": \"sys/tm/sensor-10\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "SUBSCRIBE-Destination-Group",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetrySubscription\": {\n        \"attributes\": {\n          \"id\": \"30\"\n        }\n        \"children\": [{\n          \"telemetryRsDestGroupRel\": {\n            \"attributes\": {\n              \"tDn\": \"sys/tm/dest-20\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "POST-Telemetry-All-Configs",
+			"description": "",
+			"item": [
+				{
+					"name": "CREATE-Telemetry-All-Configs",
+					"request": {
+						"url": "http://{{ip}}/api/mo/sys.json",
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"telemetryEntity\": {\n    \"children\": [{\n      \"telemetryCertificate\": {\n        \"attributes\": {\n          \"filename\": \"/bootflash/root.pem\",\n          \"hostname\" : \"foo.test.google.fr\"\n        }\n      }\n    },\n    {\n      \"telemetrySensorGroup\": {\n        \"attributes\": {\n          \"id\": \"10\",\n          \"dataSrc\" : \"DME\"\n        }\n        \"children\": [{\n          \"telemetrySensorPath\": {\n            \"attributes\": {\n              \"filterCondition\": \"eq(fmBgp.operSt,\\\"disabled\\\")\",\n              \"path\": \"sys/fm/bgp\",\n              \"depth\": \"0\"\n            }\n          }\n        }\n        ]\n      }\n    },\n    {\n      \"telemetryDestGroup\": {\n        \"attributes\": {\n          \"id\": \"20\"\n        }\n        \"children\": [{\n          \"telemetryDest\": {\n            \"attributes\": {\n              \"addr\": \"1.2.3.4\",\n              \"port\": \"50055\",\n              \"enc\": \"GPB\",\n              \"proto\": \"gRPC\"\n            }\n          }\n        }\n        ]\n      }\n    },\n    {\n      \"telemetrySubscription\": {\n        \"attributes\": {\n          \"id\": \"30\"\n        }\n        \"children\": [{\n          \"telemetryRsSensorGroupRel\": {\n            \"attributes\": {\n              \"sampleIntvl\": \"0\",\n              \"tDn\": \"sys/tm/sensor-10\"\n            }\n          }\n        },\n        {\n          \"telemetryRsDestGroupRel\": {\n            \"attributes\": {\n              \"tDn\": \"sys/tm/dest-20\"\n            }\n          }\n        }\n        ]\n      }\n    }\n    ]\n  }\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
