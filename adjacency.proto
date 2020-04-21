@@ -1,0 +1,89 @@
+/* ----------------------------------------------------------------------------
+ * adjacency.proto - Adjacency protobuf definitions
+ *
+ * September 2018
+ *
+ * Copyright (c) 2018-2019 by Cisco Systems, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ----------------------------------------------------------------------------
+ */
+
+syntax = "proto3";
+
+option go_package = "adjacency";
+
+option cc_enable_arenas = true;
+
+/* Adjacency event type
+ */
+enum AdjacencyEventType {
+    ADJACENCY_EVENT_TYPE_NO_EVENT = 0;
+    ADJACENCY_EVENT_TYPE_ADD = 1;
+    ADJACENCY_EVENT_TYPE_DELETE = 2;
+    ADJACENCY_EVENT_TYPE_UPDATE = 3;
+    ADJACENCY_EVENT_TYPE_DOWNLOAD = 4;
+    ADJACENCY_EVENT_TYPE_DOWNLOAD_DONE = 5;
+}
+
+/* Adjacency address family
+ */
+enum AdjacencyAddressFamily {
+    ADJACENCY_AF_IPV4 = 0;
+    ADJACENCY_AF_IPV6 = 1;
+}
+
+/* Adjacency message
+ */ 
+message NxAdjacencyProto {
+    /* IP address
+     */
+    string  ip_address = 1;
+
+    /* MAC address
+     */
+    string  mac_address = 2;
+
+    /* Interface name
+     */
+    string  interface_name = 3;
+
+    /* Physical interface name
+     */
+    string  physical_interface_name = 4;
+
+    /* vrf name
+     */
+    string  vrf_name = 5;
+
+    /* Preference
+     */ 
+    uint32  preference = 6;
+
+    /* source for the adjacency
+     */
+    string  source = 7;
+
+    /* Address family for the adjacency
+     */
+    AdjacencyAddressFamily address_family = 8;
+
+    /* Adjacency event type
+     */
+    AdjacencyEventType event_type = 9;
+
+    uint64 timestamp = 10; 
+
+    /* Mac associated with multiple ip. */
+    repeated string addrlist = 11;
+}

@@ -1,0 +1,126 @@
+/* ----------------------------------------------------------------------------
+ * mac_all.proto - Mac-all protobuf definitions
+ *
+ * August 2019
+ *
+ * Copyright (c) 2019 by Cisco Systems, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ----------------------------------------------------------------------------
+ */
+
+syntax = "proto3";
+
+package mac_all;
+
+option cc_enable_arenas = true;
+
+/* MAC event types
+ */
+enum MacAllEventType {
+    MAC_ALL_EVENT_TYPE_NO_EVENT = 0;
+    MAC_ALL_EVENT_TYPE_ADD = 1;
+    MAC_ALL_EVENT_TYPE_DELETE = 2;
+    MAC_ALL_EVENT_TYPE_UPDATE = 3;
+    MAC_ALL_EVENT_TYPE_DOWNLOAD = 4;
+    MAC_ALL_EVENT_TYPE_DOWNLOAD_DONE = 5;
+}
+
+/* MAC address types
+ */
+enum Type {
+    MAC_ALL_ADDRESS_TYPE_NO_TYPE = 0;
+    MAC_ALL_ADDRESS_TYPE_STATIC = 1;
+    MAC_ALL_ADDRESS_TYPE_DYNAMIC = 2;
+}
+
+enum MacL2Type {
+    MAC_ALL_MAC_L2_TYPE_UNKNOWN = 0;
+    MAC_ALL_MAC_L2_TYPE_PRIMARY = 1;
+    MAC_ALL_MAC_L2_TYPE_GATEWAY = 2;
+    MAC_ALL_MAC_L2_TYPE_OVERLAY = 4;
+    MAC_ALL_MAC_L2_TYPE_PRIMARY_VPC_PEER = 5;
+    MAC_ALL_MAC_L2_TYPE_CONTROL_PLANE = 6;
+    MAC_ALL_MAC_L2_TYPE_VSAN = 7;
+}
+
+enum MacInfo {
+    MAC_ALL_INFO_STANDARD = 0;
+    MAC_ALL_INFO_DROP = 1;
+    MAC_ALL_INFO_SVI_DOWN_FLOOD = 2;
+    MAC_ALL_INFO_SUP_INBAND_CFSOE = 3;
+    MAC_ALL_INFO_VPC_PEER_LINK = 4;
+    MAC_ALL_INFO_NVE = 5;
+    MAC_ALL_INFO_SUP_ETH = 6;
+}
+
+/* MAC message
+ */
+message Mac {
+    /* Age - seconds since last seen
+     */
+    uint32 age = 1;
+
+    /* Additional Information on the MAC
+     */
+    MacInfo mac_info = 2;
+
+    /* NTFY 
+     */
+    bool ntfy = 3;
+
+    /* Port - 
+       Must match first field in the output of show intf brief. 
+       Example: Eth1/1 or Vlan100
+     */
+    string port = 4;
+
+    /* Routed or not 
+     */
+    bool routed = 5;
+
+    /* Secure or not 
+     */
+    bool secure = 6;
+
+    /* Static or Dynamic 
+     */
+    Type mac_type = 7;
+
+    /* MAC L2 Type 
+     */
+    MacL2Type l2_type = 8;
+
+    /* MAC address
+     */
+    string mac_address = 9;
+
+    /* VLAN number
+     */
+    uint32 vlan = 10;
+
+    /* Event types
+     */
+    MacAllEventType event_type = 11;
+}
+
+message Macall {
+    repeated MacallList list = 1;
+}
+ 
+message MacallList {
+    uint32 vlan_id = 1;
+    string mac = 2;
+    Mac value = 3;
+}
+

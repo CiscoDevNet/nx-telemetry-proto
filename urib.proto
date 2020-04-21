@@ -1,0 +1,133 @@
+/* ----------------------------------------------------------------------------
+ * urib.proto - URIB protobuf definitions
+ *
+ * September 2018
+ *
+ * Copyright (c) 2018 by Cisco Systems, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ----------------------------------------------------------------------------
+ */
+
+syntax = "proto3";
+
+option go_package = "urib";
+
+option cc_enable_arenas = true;
+
+/* URIB event type
+ */
+enum UribEventType {
+    URIB_EVENT_TYPE_NO_EVENT = 0;
+    URIB_EVENT_TYPE_ADD = 1;
+    URIB_EVENT_TYPE_DELETE = 2;
+    URIB_EVENT_TYPE_UPDATE = 3;
+    URIB_EVENT_TYPE_DOWNLOAD = 4;
+    URIB_EVENT_TYPE_DOWNLOAD_DONE = 5;
+}
+
+/* URIB encap type
+ */
+enum EncapType {
+    ENCAP_TYPE_NONE = 0;
+    ENCAP_TYPE_VXLAN = 1;
+}
+
+/* URIB next hop type
+ */
+enum NhType {
+    NH_TYPE_NONE = 0x0;
+    NH_TYPE_ATTACHED = 1;
+    NH_TYPE_LOCAL = 2;
+    NH_TYPE_DIRECT = 3;
+    NH_TYPE_RECURSIVE = 4;
+    NH_TYPE_BACKUP = 5;
+    NH_TYPE_DROP = 6;
+    NH_TYPE_DISCARD = 7;
+}
+
+/* Next hop
+ */
+message NxL3NextHopProto {
+    /* Address of Next hop
+     */
+    string  address = 1;
+
+    /* Outgoing interface for the next hop
+     */
+    string  out_interface = 2;
+
+    /* Vrf name for the next hop
+     */
+    string  vrf_name = 3;
+
+    /* Owner of the next hop
+     */
+    string  owner = 4;
+
+    /* Preference for the next hop
+     */ 
+    uint32  preference = 5;
+
+    /* Metric for the next hop
+     */
+    uint32  metric = 6;
+
+    /* Tag for the next hop
+     */
+    uint32  tag = 7;
+
+    /* segment id for the next hop
+     */
+    uint32  segment_id = 8;
+
+    /* tunnel id for the next hop
+     */
+    uint32  tunnel_id = 9;
+
+    /* encap type for the next hop
+     */
+    EncapType encap_type = 10;
+
+    /* Bitwise-OR of Flags for NhType.
+     */
+    uint32 nh_type_flags = 11; 
+}
+
+/* L3 route
+ */ 
+message NxL3RouteProto {
+    /* Vrf name of the l3 route
+     */
+    string  vrf_name = 1;
+
+    /* l3 route prefix address
+     */
+    string  address = 2;
+
+    /* Mask length for the l3 route
+     */
+    uint32  mask_len = 3;
+
+    /* Number of next hops for the l3 route
+     */
+    uint32  l3_next_hop_count = 4;
+
+    /* Event type
+     */
+    UribEventType event_type = 5;
+
+    /* Next hops
+     */
+    repeated NxL3NextHopProto next_hop = 6;
+}
