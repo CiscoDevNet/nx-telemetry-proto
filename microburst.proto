@@ -1,0 +1,122 @@
+/* ----------------------------------------------------------------------------
+ * microburst.proto - microburst stats protobuf definitions
+ *
+ * March 2023
+ *
+ * Copyright (c) 2023 by Cisco Systems, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ * ----------------------------------------------------------------------------
+ */
+
+syntax = "proto3";
+
+package stats;
+
+message Microburst {
+    /* interface name */
+    string interfaceName = 1;
+
+    /* interface port queue-<idx> */
+    string queue = 2;
+
+    /* unicast (or) multicast */
+    string queueType = 3;
+
+    /* not used */
+    int32 threshold = 4;
+
+    /* set to peak occupancy during burst */
+    int32 peak = 5;
+
+    /* not used */
+    int32 endDepth = 6;
+
+    /* set to burst duration */
+    int64 duration = 7;
+
+    /* set to encoding timestamp */
+    string ts = 8;
+
+    /* set to up timestamp */
+    string startTs = 9;
+
+    /* set to down timestamp */
+    string endTs = 10;
+
+    /* set to burst peak timestamp */
+    string peakTs = 11;
+
+    /* set to node-<node_name>/microburst/interface-<port_name>/queue-[queue-<queue_idx>] */
+    string sourceName = 12;
+
+    /* set to class-level<level> */
+    string classLevel = 13;
+}
+
+message Counter {
+     string name = 1;
+     int64 currentVal = 2;
+     int64 min = 3;
+     int64 max = 4;
+     double avg = 5;
+     int32 interval = 6;
+     int64 cumVal = 7;
+     double currentValDouble = 8;
+     int64 baseVal = 9;
+     uint64 currentValU64 = 10;
+}
+
+message Stats {
+    /* not set */
+    string source = 1;
+
+    /* set to microburst
+     */
+    string statName = 2;
+
+    /* not used
+     */
+    repeated Counter counters = 3;
+
+    /* microburst stats
+     */
+    repeated Microburst microburst = 4;
+}
+
+message StatsStream {
+    /* nodeName from switch telemetry configuration
+     * # "use-nodeid <fabric_name/node_name>"
+     */
+    string nodeName = 1;
+ 
+    /* encode timestamp
+     */
+    string timestamp = 2;
+
+    /* microburst stats */
+    repeated Stats statObjects = 3;
+
+    /* fabricName is extracted from switch telemetry configuration
+     * # "use-nodeid <fabric_name/node_name>"
+     */
+    string fabricName = 4;
+
+    /* set to CISCO_NX-OS
+     */
+    string vendor = 5;
+
+    /* set to 2
+     */
+    int32 version = 6;
+}
