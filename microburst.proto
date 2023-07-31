@@ -21,6 +21,8 @@
 
 syntax = "proto3";
 
+option go_package = "microburst/stats";
+
 package stats;
 
 message Microburst {
